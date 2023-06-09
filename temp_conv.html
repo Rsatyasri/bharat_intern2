@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>TEMPERATURE CONVERTER</title>
+    <style>
+        *{
+            padding:0;
+            margin:0;
+        }
+        body{
+            background-image: linear-gradient(to top right,rgb(21, 181, 186),rgb(237, 238, 238),rgb(212, 207, 61));
+            background-repeat:no-repeat ;
+            background-size: cover;
+            height:100vh;
+            display: flex;
+        }
+        
+        #calc{
+           margin-top:200px;
+           border-radius:4px solid black;
+           font-size:28px;
+           padding:5px;
+            margin-top:150px;
+            margin-left:470px;
+            border:5px;
+            width:600px;
+            height:300px;
+            justify-content: center;
+            text-align: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-image:url("th.jpeg");
+            border-radius:5px;
+            box-shadow: 0 8px 8px 0 rgba(160, 148, 148, 0.2), 0 0px 2px 0 rgba(208, 196, 196, 0.19);
+        }
+        .a{
+            margin-left:-6cm;
+            margin-top:0.5cm;
+            color:white;
+        }
+        input[type=number]{
+        height:20px;
+        padding:3px;
+        padding-left:10px;
+        margin:5px;
+        font-size:18px;
+        width:180px;
+        border-radius:5px;
+        background-color:burlywood;
+        }
+        .c select{
+            width:190px;
+            height:35px;
+            margin:5px;
+            border-radius:10px;
+            font-size:18px;
+            background-color:burlywood;
+        }
+        input[type=submit]{
+            background-color:red;
+            margin:-60px;
+            width:150px;
+            border-radius:50px;
+            font-size:20px;
+            transition-property: width 2s, height 2s, transform 2s;
+        }
+        input[type=submit]:hover{
+           background-color:forestgreen;
+           width:160px;
+        }
+        .fa fa-thermometer-three-quarters{
+            height:100px;
+        }
+        marquee{
+            font-size:30px;
+            margin-top:100px;
+            position: relative;
+            right:-100px;
+
+        }
+
+    </style>
+</head>
+<body>
+    
+    <div class="container">
+        <marquee width="100%" behavior="alternate">  
+        <h1> <b> TEMPERATURE CONVERTER</b></h1>
+        </marquee>
+       
+        <form id="calc" onsubmit="calculateTemp(); return false">
+            <div class="a">
+            <label for="temp"> <b> Enter temperature to convert</b></label>
+            <br>
+            <input type="number" name="temp" id="temp" value="0">
+           <div class="c">
+            <select name="diff_temp" id="diff_temp">
+                <option value="cel">&#176;Celsius</option>
+                <option value="fah">&#176;Fahrenheit</option>
+            </select>
+            </div>
+            <br>
+            <div class="s">
+            <input type="submit" name="temp" id="submit">
+            </div>
+            <br>
+            <span id="result"></span>
+        </div>
+        </form>
+    </div>
+    <script>
+        const calculateTemp = () =>{
+    const inTemp=document.getElementById('temp').value;
+    const tempopt=document.getElementById('diff_temp');
+    const value=diff_temp.options[tempopt.selectedIndex].value;
+
+    const c2f = (cel) => {
+        let fahrenheit = ((cel * 9 / 5) + 32).toFixed(1);
+        return fahrenheit;
+    }
+
+    const f2c = (fah) => {
+        let celsius = ((fah - 32) * 5 / 9).toFixed(1);
+        return celsius;
+    }
+
+    if (value == 'cel') {
+        document.getElementById("result").innerHTML = c2f
+        (inTemp) + "&#176; Fahrenheit";
+    }
+    else {
+        document.getElementById("result").innerHTML = f2c
+        (inTemp) + "&#176; Celsius";
+    }
+}
+    </script>
+</body>
+</html>
